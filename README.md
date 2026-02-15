@@ -1,8 +1,6 @@
 # _claude-safely-skip-permissions_
 
-_A `--safely-skip-permissions` flag for [Claude Code](https://claude.com/claude-code)._
-
-_Works like `--dangerously-skip-permissions` but blocks destructive file removal commands (`rm -rf`, `find -delete`, `shred`, etc.)._
+_Run Claude autonomously without dangerous commands._
 
 ## _Install_
 
@@ -10,13 +8,13 @@ _Works like `--dangerously-skip-permissions` but blocks destructive file removal
 curl -fsSL https://raw.githubusercontent.com/jepeake/claude-safely-skip-permissions/main/install.sh | bash
 ```
 
-## _Usage_
+## _Use_
 
 ```bash
 claude --safely-skip-permissions
 ```
 
-_All permission prompts are skipped, except destructive file removal commands are blocked:_
+_Blocked commands:_
 
 | _Blocked_ |
 |---|
