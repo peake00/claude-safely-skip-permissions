@@ -12,6 +12,7 @@ curl -fsSL https://raw.githubusercontent.com/jepeake/claude-safely-skip-permissi
 
 ```bash
 claude --safely-skip-permissions
+claude --safe-skip          
 ```
 
 _Blocked commands:_

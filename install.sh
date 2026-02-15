@@ -67,7 +67,7 @@ claude() {
   local args=()
   local safe_mode=false
   for arg in "$@"; do
-    if [[ "$arg" == "--safely-skip-permissions" ]]; then
+    if [[ "$arg" == "--safely-skip-permissions" || "$arg" == "--safe-skip" ]]; then
       safe_mode=true
       args+=("--dangerously-skip-permissions")
     else
@@ -103,5 +103,6 @@ ok "Installed."
 echo ""
 info "Usage:"
 echo "  claude --safely-skip-permissions         # skip prompts, block destructive commands"
+echo "  claude --safe-skip                       # shorthand"
 echo "  claude --dangerously-skip-permissions    # fully unrestricted (unchanged)"
 echo ""
