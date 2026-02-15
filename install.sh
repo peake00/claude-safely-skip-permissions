@@ -27,7 +27,6 @@ fi
 # --- Install hook script ---
 mkdir -p "$HOOK_DIR"
 
-# If running from local repo, copy from there; otherwise download
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ -f "$SCRIPT_DIR/block-rm.sh" ]; then
   cp "$SCRIPT_DIR/block-rm.sh" "$HOOK_FILE"
@@ -53,14 +52,12 @@ fi
 
 SETTINGS=$(cat "$SETTINGS_FILE")
 
-# Merge hook into existing settings
 SETTINGS=$(echo "$SETTINGS" | jq --argjson hook "$HOOK_ENTRY" '
   .hooks.PreToolUse = (.hooks.PreToolUse // []) + [$hook]
 ')
 echo "$SETTINGS" | jq '.' > "$SETTINGS_FILE"
 
 # --- Add shell function ---
-
 SHELL_FUNC='
 # claude-safely-skip-permissions
 claude() {
@@ -81,7 +78,6 @@ claude() {
   fi
 }'
 
-# Detect shell config file
 if [ -n "$ZSH_VERSION" ] || [ "$SHELL" = "$(which zsh 2>/dev/null)" ] || [ "$SHELL" = "/bin/zsh" ]; then
   RC_FILE="$HOME/.zshrc"
 elif [ -n "$BASH_VERSION" ] || [ "$SHELL" = "$(which bash 2>/dev/null)" ] || [ "$SHELL" = "/bin/bash" ]; then
@@ -90,7 +86,6 @@ else
   RC_FILE="$HOME/.profile"
 fi
 
-# Follow symlinks to edit the real file
 if [ -L "$RC_FILE" ]; then
   RC_FILE="$(readlink -f "$RC_FILE" 2>/dev/null || readlink "$RC_FILE")"
 fi

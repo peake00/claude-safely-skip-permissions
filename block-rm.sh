@@ -1,6 +1,5 @@
 #!/bin/bash
 # claude-safely-skip-permissions: PreToolUse hook
-# Blocks destructive file removal commands when CLAUDE_SAFE_MODE=1.
 
 [ "$CLAUDE_SAFE_MODE" != "1" ] && exit 0
 
