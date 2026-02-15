@@ -23,9 +23,3 @@ _Blocked commands:_
 | `xargs rm` |
 | `shred`, `wipe` |
 
-
-## _Requirements_
-
-- [Claude Code](https://claude.com/claude-code)
-- `jq` (`brew install jq` / `apt install jq`)
-- bash or zsh
