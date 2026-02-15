@@ -23,3 +23,6 @@ _Blocked commands:_
 | `xargs rm` |
 | `shred`, `wipe` |
 
+## _Requirements_
+
+_Supports bash or zsh terminals._
